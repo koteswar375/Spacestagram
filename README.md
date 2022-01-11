@@ -2,7 +2,6 @@
 
 ![logo](https://raw.githubusercontent.com/koteswar375/Spacestagram/main/src/Spacestagram.jpg)
 
-The site is hosted at https://koteswar375.github.io/Spacestagram/
 
 ## Getting Started with App
 
