@@ -4,7 +4,7 @@
 
 The site is hosted at https://koteswar375.github.io/Spacestagram/
 
-## Getting Started with React App
+## Getting Started with App
 
 ### `npm start`
 
