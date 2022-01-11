@@ -51,14 +51,16 @@ function App() {
 
   return (
     <div className="App">
-      <header className="App-header border-bottom display-6 fw-normal">
+      <header className="App-header border-bottom fw-normal">
         Spacestagram
       </header>
-      <div className='container py-5'>
+      <main className='container body py-5'>
         {
-          <Images images={imagesList} />
+          (imagesList.length == 0)?
+          (<div className="loader"></div>):
+          (<Images images={imagesList} />)
         }
-      </div>
+      </main>
     </div>
   );
 }

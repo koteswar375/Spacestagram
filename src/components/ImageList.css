@@ -10,3 +10,11 @@
     width: 300px;
 }
 
+.loader {
+    top:25%;
+}
+
+.dummyImage {
+    height:250px;
+    background-color: slategray;
+}

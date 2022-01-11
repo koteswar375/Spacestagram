@@ -3,12 +3,14 @@ import React, { Component, createRef } from 'react';
 class ImageCard extends Component {
     constructor(props) {
         super(props);
-        this.state = { spans: 0, like: false };
+        this.state = { spans: 0, like: false, imageLoaded: false };
         this.imageRef = createRef();
         this.bodyRef = createRef();
     }
 
     componentDidMount() {
+        const h = 250 + this.bodyRef.current.clientHeight + 20;
+        this.setState({ spans: Math.ceil(h / 10) });
         this.imageRef.current.addEventListener('load', this.setSpans);
     }
 
@@ -17,7 +19,12 @@ class ImageCard extends Component {
         this.setState({ like: likeState })
     }
 
+    handleImageErrored(e) {
+        console.log(e)
+    }
+
     setSpans = () => {
+        this.setState({ imageLoaded: true });
         const h = this.imageRef.current.clientHeight + this.bodyRef.current.clientHeight + 20;
         this.setState({ spans: Math.ceil(h / 10) })
     }
@@ -26,7 +33,14 @@ class ImageCard extends Component {
 
         return (
             <div className="bg-light border border-secondary mt-2 " style={{ width: '300px', gridRowEnd: `span ${this.state.spans}` }}>
-                <img ref={this.imageRef} className="img-thumbnail" src={url} />
+             
+                <img  style={{display:[this.state.imageLoaded ? 'block': 'none']}} ref={this.imageRef} 
+                className="img-thumbnail"
+                alt={{title}}
+                    src={url} />
+                <div style={{display:[this.state.imageLoaded ? 'none': 'block']}} className="dummyImage">
+                    <div className="loader"></div>
+                </div>
                 <div ref={this.bodyRef} className="px-2 py-2" style={{ cursor: 'pointer' }}>
                     <h6>{title}</h6>
                     <div className="text-muted fs-6">{date}</div>
